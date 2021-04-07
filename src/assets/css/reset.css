@@ -1,5 +1,6 @@
 /* 路径以~符号开头会自动添加浏览器私有前缀 */
-@import url('~normalize.css'); 
+@import "~normalize.css"; 
+@import "~antd/dist/antd.css";
 
 /* 云音乐项目基础样式reset */
 body, html, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, header, menu, section, p, input, td, th, ins {
