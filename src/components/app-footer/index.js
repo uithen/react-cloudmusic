@@ -1,11 +1,12 @@
 import React, { Fragment, memo } from 'react'
 
+import { footerLinks, footerImages } from '@/api/local-data'
+
 import {
   StyledFooter,
   FooterLeft,
   FooterRight
 } from './styled'
-import { footerLinks, footerImages} from '@/api/local-data'
 
 export default memo(function HEAppFooter() {
   return (
