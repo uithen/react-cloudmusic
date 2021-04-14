@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 import { headerLinks} from '@/api/local-data'
 import {
-  StyledHeader,
+  HeaderWrapper,
   HeaderLeft,
   HeaderRight
 } from './styled'
@@ -26,7 +26,7 @@ export default memo(function HEAppHeader() {
   }
 
   return (
-    <StyledHeader>
+    <HeaderWrapper>
       <div className="content wrap-1100">
         <HeaderLeft>
           <h1 className="logo sprite_01">
@@ -45,8 +45,17 @@ export default memo(function HEAppHeader() {
           </ul>
         </HeaderLeft>
         <HeaderRight>
-            <Input className="search" placeholder="音乐/视频/电台/用户" prefix={<SearchOutlined />} />
-            <a href="//music.163.com/#/login" className="creator-center" target="_blank" rel="noreferrer">
+            <Input
+              prefix={<SearchOutlined />}
+              className="search" 
+              placeholder="音乐/视频/电台/用户" 
+            />
+            <a
+              className="creator-center" 
+              href="//music.163.com/#/login" 
+              rel="noreferrer noopener"
+              target="_blank" 
+            >
               创作者中心
             </a>
             <div className="login">
@@ -55,6 +64,6 @@ export default memo(function HEAppHeader() {
         </HeaderRight>
       </div>
       <div className="divider"></div>
-    </StyledHeader>
+    </HeaderWrapper>
   )
 })

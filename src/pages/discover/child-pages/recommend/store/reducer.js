@@ -8,7 +8,7 @@ import {
 //   topBanner: []
 // }
 
-// 使用imjs替代assign/解构的方式来维护不可变数据,进行性能优化(结构共享与持久化数据)
+// 使用imjs替代assign/解构的方式来维护不可变数据提升性能(结构共享与持久化数据)
 const defaultRecommend = Map({
   topBanner: []
 })

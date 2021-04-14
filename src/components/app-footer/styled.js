@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import spriteFooterOne from '@/assets/img/sprite_footer_01.png'
 import spriteFooterTwo from '@/assets/img/sprite_footer_02.png'
 
-export const StyledFooter = styled.div`
+const FooterWrapper = styled.div`
   /* border: 1px solid #ccc; */
   height: 172px;
   border-top: 1px solid #d3d3d3;
@@ -13,7 +13,7 @@ export const StyledFooter = styled.div`
   }
 `
 
-export const FooterLeft = styled.div`
+const FooterLeft = styled.div`
   flex: 1;
   padding-top: 15px;
   line-height: 24px;
@@ -34,7 +34,7 @@ export const FooterLeft = styled.div`
   }
 `
 
-export const FooterRight = styled.ul`
+const FooterRight = styled.ul`
   /* border: 1px solid skyblue; */
   display: flex;
 
@@ -88,3 +88,9 @@ export const FooterRight = styled.ul`
     }
 }
 `
+
+export {
+  FooterWrapper,
+  FooterLeft,
+  FooterRight
+}

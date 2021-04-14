@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
-export const DiscoverWrapper = styled.div`
+const DiscoverWrapper = styled.div`
   .sub-nav {
     height: 30px;
     background-color: #C20C0C;
   }
 `
 
-export const StyeldSubNav = styled.ul`
+const DiscoverSubNav = styled.ul`
   display: flex;
   position: relative;
   top: -4px;
@@ -31,3 +31,8 @@ export const StyeldSubNav = styled.ul`
     }
   }
 `
+
+export {
+  DiscoverWrapper,
+  DiscoverSubNav
+}

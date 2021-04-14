@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import hotIcon from '@/assets/img/sprite_01.png'
 
-export const StyledHeader = styled.div`
+const HeaderWrapper = styled.div`
   height: 75px;
   font-size: 14px;
   background-color: #242424;
@@ -18,7 +18,7 @@ export const StyledHeader = styled.div`
   }
 `
 
-export const HeaderLeft = styled.div`
+const HeaderLeft = styled.div`
   display: flex;
   margin-right: 52px;
 
@@ -83,7 +83,7 @@ export const HeaderLeft = styled.div`
   }
 `
 
-export const HeaderRight = styled.div`
+const HeaderRight = styled.div`
   flex: 1;
   display: flex; 
   align-items: center;
@@ -126,3 +126,9 @@ export const HeaderRight = styled.div`
     color: #ccc;
   }
 `
+
+export {
+  HeaderWrapper,
+  HeaderLeft,
+  HeaderRight
+}

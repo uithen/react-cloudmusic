@@ -4,14 +4,14 @@ import { renderRoutes } from 'react-router-config'
 import { discoverMenu } from '@/api/local-data'
 
 import { NavLink } from 'react-router-dom'
-import { DiscoverWrapper, StyeldSubNav } from './styled'
+import { DiscoverWrapper, DiscoverSubNav } from './styled'
 
 export default memo(function HEDiscover(props) {
   const {routes} = props.route
   return (
     <DiscoverWrapper>
       <div className="sub-nav">
-        <StyeldSubNav className="wrap-1100">
+        <DiscoverSubNav className="wrap-1100">
           {
             discoverMenu.map(navItem => {
               return (
@@ -23,7 +23,7 @@ export default memo(function HEDiscover(props) {
               )
             })
           }
-        </StyeldSubNav>        
+        </DiscoverSubNav>        
       </div>
       {renderRoutes(routes)}
     </DiscoverWrapper>
