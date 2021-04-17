@@ -2,27 +2,27 @@ import React, { memo } from 'react'
 
 import {
   RecommendWrapper,
-  RecommendContent,
-  RecommendLeft,
-  RecommendRight
+  RcmdContent,
+  RcmdLeft,
+  RcmdRight
 } from './styled'
 import HeTopBanner from './child-cpns/top-banner'
-import HESubTitle from './child-cpns/sub-title'
+import HEHotRcmd from './child-cpns/hot-rcmd'
+import HENewAlbum from './child-cpns/new-album'
+import HERankList from './child-cpns/rank-list'
 
 export default memo(function HERecommend() {
-  const tabTitle = ['华语', '流行', '摇滚', '民谣', '电子']
-
   return (
     <RecommendWrapper>
       <HeTopBanner />
-      <RecommendContent className="wrap-980">
-        <RecommendLeft>
-          <HESubTitle tit="热门推荐" tabTitle={tabTitle}></HESubTitle>
-          <HESubTitle tit="新碟上架"></HESubTitle>
-          <HESubTitle tit="榜单"></HESubTitle>
-        </RecommendLeft>
-        <RecommendRight></RecommendRight>
-      </RecommendContent>
+      <RcmdContent className="wrap-980">
+        <RcmdLeft>
+          <HEHotRcmd />          
+          <HENewAlbum />          
+          <HERankList />          
+        </RcmdLeft>
+        <RcmdRight></RcmdRight>
+      </RcmdContent>
     </RecommendWrapper>
   )
 })

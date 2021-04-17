@@ -1,6 +1,7 @@
 import { Map } from 'immutable'
 
 import {
+  CHANGE_HOT_RCMD,
   CHANGE_TOP_BANNER
 } from './constants'
 
@@ -10,7 +11,8 @@ import {
 
 // 使用imjs替代assign/解构的方式来维护不可变数据提升性能(结构共享与持久化数据)
 const defaultRecommend = Map({
-  topBanner: []
+  topBanner: [],
+  hotRcmd: []
 })
 
 const reducer = (state = defaultRecommend, action) => {
@@ -18,6 +20,8 @@ const reducer = (state = defaultRecommend, action) => {
     case CHANGE_TOP_BANNER: 
       // return {...state, topBanner: action.topBanner}
       return state.set('topBanner', action.topBanner)
+    case CHANGE_HOT_RCMD: 
+      return state.set('hotRcmd', action.hotRcmd)
     default: 
       return state 
   }

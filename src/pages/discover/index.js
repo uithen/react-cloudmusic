@@ -8,6 +8,7 @@ import { DiscoverWrapper, DiscoverSubNav } from './styled'
 
 export default memo(function HEDiscover(props) {
   const {routes} = props.route
+  
   return (
     <DiscoverWrapper>
       <div className="sub-nav">

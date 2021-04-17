@@ -6,6 +6,16 @@ const getTopBanner = () => {
   })
 }
 
+const getHotRcmd = (limit) => {
+  return request({
+    url: '/personalized',
+    params: {
+      limit
+    }
+  })
+}
+
 export {
-  getTopBanner
+  getTopBanner,
+  getHotRcmd
 }
