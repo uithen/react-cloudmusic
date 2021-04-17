@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const SubTitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 689px;
+  width: 688px;
   height: 35px;
   padding: 0 10px 0 34px;
   border-bottom: 2px solid #C10D0C;

@@ -1,5 +1,5 @@
 // 播放量展示处理
-const getPlayCount = count => {
+export const getPlayCount = count => {
   if (count < 0) return
   if (count < 10000) {
     return count
@@ -11,11 +11,6 @@ const getPlayCount = count => {
 }
 
 // 封面图优化
-const convertImgMini = (imgUrl, size) => {
+export const convertImgMini = (imgUrl, size) => {
   return `${imgUrl}?param=${size}y${size}`
-}
-
-export {
-  getPlayCount,
-  convertImgMini
 }

@@ -1,12 +1,12 @@
 import request from './request'
 
-const getTopBanner = () => {
+export const getTopBanner = () => {
   return request({
     url: '/banner'
   })
 }
 
-const getHotRcmd = (limit) => {
+export const getHotRcmd = limit => {
   return request({
     url: '/personalized',
     params: {
@@ -15,7 +15,11 @@ const getHotRcmd = (limit) => {
   })
 }
 
-export {
-  getTopBanner,
-  getHotRcmd
+export const getNewAlbum = limit => {
+  return request({
+    url: '/top/album',
+    params: {
+      limit 
+    }
+  })
 }
