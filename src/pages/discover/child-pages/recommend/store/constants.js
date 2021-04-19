@@ -1,3 +1,6 @@
 export const CHANGE_TOP_BANNER = 'recommend/CHANGE_TOP_BANNER'
 export const CHANGE_HOT_RCMD = 'recommend/CHANGE_HOT_RCMD'
-export const CHANGE_NEW_ALBUM = 'recommend/CHANGE_NEW_ALBUM'
+export const CHANGE_ALBUM = 'recommend/CHANGE_ALBUM'
+export const CHANGE_RANKING_NEW = 'recommend/CHANGE_RANKING_NEW'
+export const CHANGE_RANKING_UP = 'recommend/CHANGE_RANKING_UP'
+export const CHANGE_RANKING_ORIGINAL = 'recommend/CHANGE_RANKING_ORIGINAL'

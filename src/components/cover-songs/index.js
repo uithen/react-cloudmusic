@@ -2,13 +2,13 @@ import React, { memo } from 'react'
 
 import { getPlayCount, convertImgMini } from '@/utils/handle-format'
 
-import { SongsCoverWrapper } from './styled'
+import { CoverSongsWrapper } from './styled'
 
-export default memo(function HESongsCover(props) {
+export default memo(function HECoverSongs(props) {
   const {cover, showBotOrigin, ellipsisText} = props 
 
   return (
-    <SongsCoverWrapper>
+    <CoverSongsWrapper>
       <div className="cover-item">
         <img src={convertImgMini(cover.picUrl, 140)} alt=""/>
         <a href="/#" title={cover.name} className="image_cover">
@@ -31,6 +31,6 @@ export default memo(function HESongsCover(props) {
           <a href="/#">xxxx</a>
         </p>
       }
-    </SongsCoverWrapper>
+    </CoverSongsWrapper>
   )
 })

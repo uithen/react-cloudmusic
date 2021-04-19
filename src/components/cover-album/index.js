@@ -2,14 +2,14 @@ import React, { memo } from 'react'
 
 import { convertImgMini } from '@/utils/handle-format'
 
-import { AlbumCoverWrapper } from './styled'
+import { CoverAlbumWrapper } from './styled'
 
-export default memo(function HEAlbumCover(props) {
+export default memo(function HECoverAlbum(props) {
   const {size, width, bgp} = props
   const {picUrl, name, company} = props.albumInfo 
   
   return (
-    <AlbumCoverWrapper width={width} size={size} bgp={bgp}>
+    <CoverAlbumWrapper width={width} size={size} bgp={bgp}>
       <div className="coveritem">
         <img src={convertImgMini(picUrl, size)} alt="" />
         <a href="/#" className="image_cover">&nbsp;</a>
@@ -20,6 +20,6 @@ export default memo(function HEAlbumCover(props) {
       <p className="author text-nowrap">
         <a href="/#">{company}</a>
       </p>
-    </AlbumCoverWrapper>
+    </CoverAlbumWrapper>
   )
 })

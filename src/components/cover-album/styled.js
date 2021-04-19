@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const AlbumCoverWrapper = styled.div`
+export const CoverAlbumWrapper = styled.div`
   width: ${props => props.width + "px"};
   margin-left: 11px;
 

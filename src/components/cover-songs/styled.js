@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import imgCover from '@/assets/img/sprite_cover.png'
 import bgIcon from '@/assets/img/sprite_icon.png'
 
-const SongsCoverWrapper = styled.li`
+export const CoverSongsWrapper = styled.li`
   width: 140px;
   height: 204px;
-  margin: 20px 0 20px 0;
+  margin: 20px 0 10px 0;
 
   .cover-item {
     position: relative;
@@ -66,7 +66,3 @@ const SongsCoverWrapper = styled.li`
     }
   }
 `
-
-export {
-  SongsCoverWrapper
-}

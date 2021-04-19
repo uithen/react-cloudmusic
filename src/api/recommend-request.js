@@ -15,11 +15,20 @@ export const getHotRcmd = limit => {
   })
 }
 
-export const getNewAlbum = limit => {
+export const getAlbum = limit => {
   return request({
     url: '/top/album',
     params: {
       limit 
+    }
+  })
+}
+
+export const getRankingList = idx => {
+  return request({
+    url: '/top/list',
+    params: {
+      idx
     }
   })
 }

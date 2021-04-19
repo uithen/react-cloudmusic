@@ -1,12 +1,12 @@
 import React, { memo, Fragment } from 'react'
 
-import { SubTitleWrapper } from './styled'
+import { ThemeHeaderRcmdWrapper } from './styled'
 
-export default memo(function HESubTitle(props) {
+export default memo(function HEThemeHeaderRcmd(props) {
   const {tit, tabTitle} = props
   
   return (
-    <SubTitleWrapper className="sprite_02">
+    <ThemeHeaderRcmdWrapper className="sprite_02">
       <a
         className="tit"
         href="/#"
@@ -33,6 +33,6 @@ export default memo(function HESubTitle(props) {
         <a href="/#">更多</a>
         <i className="sprite_02">&nbsp;</i>
       </span>
-    </SubTitleWrapper>
+    </ThemeHeaderRcmdWrapper>
   )
 })

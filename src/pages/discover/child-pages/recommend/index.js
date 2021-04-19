@@ -8,8 +8,8 @@ import {
 } from './styled'
 import HeTopBanner from './child-cpns/top-banner'
 import HEHotRcmd from './child-cpns/hot-rcmd'
-import HENewAlbum from './child-cpns/new-album'
-import HERankList from './child-cpns/rank-list'
+import HEAlbumRcmd from './child-cpns/album-rcmd'
+import HERankingRcmd from './child-cpns/ranking-rcmd'
 
 export default memo(function HERecommend() {
   return (
@@ -18,8 +18,8 @@ export default memo(function HERecommend() {
       <RcmdContent className="wrap-980">
         <RcmdLeft>
           <HEHotRcmd />          
-          <HENewAlbum />          
-          <HERankList />          
+          <HEAlbumRcmd />          
+          <HERankingRcmd />          
         </RcmdLeft>
         <RcmdRight></RcmdRight>
       </RcmdContent>

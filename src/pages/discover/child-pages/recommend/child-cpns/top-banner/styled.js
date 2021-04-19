@@ -25,7 +25,19 @@ const BannerLeft = styled.div`
       width: 100%;
       height: 100%;
     }
+  }
 
+  .slick-dots li {
+    button {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      opacity: 1;
+    }
+
+    &.slick-active button {
+      background: #C20C0C;
+    }
   }
 `
 const BannerRight = styled.div`

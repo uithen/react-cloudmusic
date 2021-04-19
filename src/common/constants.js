@@ -1,0 +1,1 @@
+export const HOT_RCMD_LIMIT = 8

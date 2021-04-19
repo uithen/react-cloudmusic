@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 import arrowIcon from '@/assets/img/sprite_02.png'
 
-export const NewAlbumWrapper = styled.div`
-  margin-top: 35px;
+export const AlbumWrapper = styled.div`
+  margin-top: 40px;
 
   .album {
     display: flex;

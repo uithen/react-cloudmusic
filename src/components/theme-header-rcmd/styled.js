@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const SubTitleWrapper = styled.div`
+export const ThemeHeaderRcmdWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 688px;
@@ -45,7 +45,3 @@ const SubTitleWrapper = styled.div`
     }
   }
 `
-
-export {
-  SubTitleWrapper
-}
