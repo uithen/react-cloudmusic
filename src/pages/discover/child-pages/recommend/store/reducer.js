@@ -6,7 +6,8 @@ import {
   CHANGE_TOP_BANNER,
   CHANGE_RANKING_UP,
   CHANGE_RANKING_NEW,
-  CHANGE_RANKING_ORIGINAL
+  CHANGE_RANKING_ORIGINAL,
+  CHANGE_ARTIST_LIST
 } from './constants'
 
 // const defaultRecommend = {
@@ -21,7 +22,9 @@ const defaultRecommend = Map({
 
   rankingUp: {},
   rankingOriginal: {},
-  rankingNew: {}
+  rankingNew: {},
+
+  artistList: []
 })
 
 const reducer = (state = defaultRecommend, action) => {
@@ -41,7 +44,8 @@ const reducer = (state = defaultRecommend, action) => {
     case CHANGE_RANKING_ORIGINAL: 
       return state.set('rankingOriginal', action.rankingOriginal)
 
-    
+    case CHANGE_ARTIST_LIST: 
+      return state.set('artistList', action.artistList)
     default: 
       return state 
   }

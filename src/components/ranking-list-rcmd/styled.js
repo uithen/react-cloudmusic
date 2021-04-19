@@ -58,6 +58,7 @@ export const RankingListRcmdWrapper = styled.dl`
       .no-top {
         width: 35px;
         height: 32px;
+        margin-left: 11px;
         text-align: center;
         font-size: 16px;
         color: #666;
@@ -76,7 +77,6 @@ export const RankingListRcmdWrapper = styled.dl`
       .operate {
         display: none; 
         margin-top: 11px;
-
         a {
           display: inline-block;
           width: 17px;
@@ -89,7 +89,7 @@ export const RankingListRcmdWrapper = styled.dl`
         }
         .addto {
           margin: 2px 6px 0 0;
-          background-position: 0 -700px;
+          background-position: 0 -699px;
         }
         .collect {
           background-position: -297px -268px;

@@ -32,3 +32,13 @@ export const getRankingList = idx => {
     }
   })
 }
+
+export const getArtistList = (limit, type) => {
+  return request({
+    url: '/artist/list',
+    params: {
+      limit,
+      type 
+    }
+  })
+}

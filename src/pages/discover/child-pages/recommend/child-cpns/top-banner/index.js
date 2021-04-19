@@ -33,7 +33,9 @@ export default memo(function HETopBanner() {
   // 拿到当前索引同步[高斯模糊图片bgImg]的url
   const switchIndex = useCallback(
     (from, to) => {
-      setCrtIdx(to)
+      setTimeout(() => {
+        setCrtIdx(to)
+      }, 0)
     },
     []
   )

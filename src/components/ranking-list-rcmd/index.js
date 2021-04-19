@@ -30,7 +30,7 @@ export default memo(function HERankingListRcmd(props) {
             tracks.slice(0, 10).map((song, index) => {
               return (
                 <li key={song.id}>
-                  <span className="no-top no-top3">{index+1}</span>
+                  <span className="no-top">{index+1}</span>
                   <a href="/todo" className="text-nowrap">{song.name}</a>
                   <div className="operate">
                     <a className="play sprite_02" href="/todo" >播放</a>
