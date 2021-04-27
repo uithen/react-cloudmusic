@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
 export const RankingListRcmdWrapper = styled.dl`
-  flex: 1;
-
   .top {
     display: flex;
     height: 120px;
@@ -26,7 +24,7 @@ export const RankingListRcmdWrapper = styled.dl`
       .btn {
         margin-top: 10px;
 
-        a {
+        button {
           display: inline-block;
           width: 22px;
           height: 22px;
@@ -77,7 +75,7 @@ export const RankingListRcmdWrapper = styled.dl`
       .operate {
         display: none; 
         margin-top: 11px;
-        a {
+        button {
           display: inline-block;
           width: 17px;
           height: 17px;

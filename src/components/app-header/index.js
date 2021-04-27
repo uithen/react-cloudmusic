@@ -1,6 +1,8 @@
 import React, { memo } from 'react'
-import { NavLink } from 'react-router-dom'
 
+import { NavLink } from 'react-router-dom'
+import { Input } from 'antd'
+import { SearchOutlined } from '@ant-design/icons'
 import { headerLinks} from '@/api/local-data'
 import {
   HeaderWrapper,
@@ -8,8 +10,6 @@ import {
   HeaderRight
 } from './styled'
 
-import { Input } from 'antd'
-import { SearchOutlined } from '@ant-design/icons'
 
 export default memo(function HEAppHeader() {
   const showNav = (nav, index) => {

@@ -8,6 +8,7 @@ import HEAlbum from '../pages/discover/child-pages/album'
 
 import HEMine from '../pages/mine'
 import HEFriend from '../pages/friend'
+import HESong from '../pages/song'
 
 
 
@@ -58,6 +59,10 @@ const routes = [
     path: '/friend',
     component: HEFriend
   },
+  {
+    path: '/song',
+    component: HESong
+  }
 ]
 
 export default routes 

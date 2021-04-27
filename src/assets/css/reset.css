@@ -36,6 +36,10 @@ table {
   border-spacing: 0;
 }
 
+button {
+  cursor: pointer;
+}
+
 img {
   border: none;
   vertical-align: middle;
@@ -125,16 +129,18 @@ body, textarea, select, input, button {
 }
 
 
-/* .ant-message .ant-message-notice-content {
+.lyric .ant-message-notice-content {
   position: fixed;
   left: 50%;
+  bottom: 59px;
   transform: translateX(-50%);
-  bottom: 60px;
-  background-color: rgba(0, 0, 0, .5);
+  padding: 0;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, .6);
   color: #fff;
 }
 
-span:hover.link {
+/* span:hover.link {
   text-decoration: underline;
   cursor: pointer;
 } */

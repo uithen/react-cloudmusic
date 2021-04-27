@@ -65,7 +65,7 @@ export const footerImages = [
   }
 ]
 
-export const discoverMenu = [
+export const subNav = [
   {
     title: '推荐',
     link: '/discover'

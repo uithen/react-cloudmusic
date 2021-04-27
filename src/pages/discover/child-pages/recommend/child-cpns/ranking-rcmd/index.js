@@ -8,7 +8,11 @@ import HEThemeHeaderRcmd from '@/components/theme-header-rcmd'
 import HERankingListRcmd from '@/components/ranking-list-rcmd'
 
 export default memo(function HERankingRcmd() {
-  const {rankingUp, rankingNew, rankingOriginal} = useSelector(
+  const {
+    rankingUp = {}, 
+    rankingNew = {}, 
+    rankingOriginal = {}
+  } = useSelector(
     state => ({
       rankingUp: state.getIn(['recommend', 'rankingUp']),
       rankingNew: state.getIn(['recommend', 'rankingNew']),
@@ -31,9 +35,9 @@ export default memo(function HERankingRcmd() {
     <RankingRcmdWrapper>
       <HEThemeHeaderRcmd tit="榜单" />
       <div className="list-item">
+        <HERankingListRcmd info={rankingOriginal} />
         <HERankingListRcmd info={rankingUp} />
         <HERankingListRcmd info={rankingNew} />
-        <HERankingListRcmd info={rankingOriginal} />
       </div>
     </RankingRcmdWrapper>
   )

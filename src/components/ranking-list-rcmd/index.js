@@ -1,12 +1,21 @@
 import React, { memo } from 'react'
+import { useDispatch} from 'react-redux'
 
 import { convertImgMini} from '@/utils/handle-format'
+import { getCurrentSongAction } from '@/pages/song/store'
 
+import { NavLink } from 'react-router-dom'
 import { RankingListRcmdWrapper } from './styled'
 
 export default memo(function HERankingListRcmd(props) {
   const {name, coverImgUrl, tracks = []} = props.info 
-
+  
+  const dispatch = useDispatch()
+ 
+  const playMusic = song => {
+    dispatch(getCurrentSongAction(song.id))
+  }
+  
   return (
     <RankingListRcmdWrapper>
       <dt className="top">
@@ -19,8 +28,8 @@ export default memo(function HERankingListRcmd(props) {
             <h3>{name}</h3>
           </a>
           <div className="btn">
-            <a className="play sprite_02" href="/todo" >播放</a>
-            <a className="collect sprite_02" href="/todo" >收藏</a>
+            <button className="play sprite_02" title="播放">播放</button>
+            <button className="collect sprite_02" title="收藏">收藏</button>
           </div>
         </div>
       </dt>
@@ -31,11 +40,11 @@ export default memo(function HERankingListRcmd(props) {
               return (
                 <li key={song.id}>
                   <span className="no-top">{index+1}</span>
-                  <a href="/todo" className="text-nowrap">{song.name}</a>
+                  <NavLink to="/song" className="text-nowrap">{song.name}</NavLink>
                   <div className="operate">
-                    <a className="play sprite_02" href="/todo" >播放</a>
-                    <a className="addto sprite_icon2" href="/todo" >添加</a>
-                    <a className="collect sprite_02" href="/todo" >收藏</a>
+                    <button onClick={e => playMusic(song)} className="play sprite_02" title="播放">播放</button>
+                    <button className="addto sprite_icon2" title="添加到播放列表">添加</button>
+                    <button className="collect sprite_02" title="收藏">收藏</button>
                   </div>
                 </li>
               )
