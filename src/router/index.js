@@ -1,18 +1,18 @@
-import HEDiscover from '../pages/discover'
-import HERecommend from '../pages/discover/child-pages/recommend'
-import HERanking from '../pages/discover/child-pages/ranking'
-import HESongs from '../pages/discover/child-pages/songs'
-import HEDjradio from '../pages/discover/child-pages/djradio'
-import HEArtist from '../pages/discover/child-pages/artist'
-import HEAlbum from '../pages/discover/child-pages/album'
-
-import HEMine from '../pages/mine'
-import HEFriend from '../pages/friend'
-import HESong from '../pages/song'
-
-
-
+import * as React from 'react'
 import { Redirect } from 'react-router'
+
+const HEDiscover = React.lazy(() => import('../pages/discover'))
+const HERecommend = React.lazy(() => import('../pages/discover/child-pages/recommend'))
+const HERanking = React.lazy(() => import('../pages/discover/child-pages/ranking'))
+const HESongs = React.lazy(() => import('../pages/discover/child-pages/songs'))
+const HEDjradio = React.lazy(() => import('../pages/discover/child-pages/djradio'))
+const HEArtist = React.lazy(() => import('../pages/discover/child-pages/artist'))
+const HEAlbum = React.lazy(() => import('../pages/discover/child-pages/album'))
+
+const HEMine = React.lazy(() => import('../pages/mine'))
+const HEFriend = React.lazy(() => import('../pages/friend'))
+const HESong = React.lazy(() => import('../pages/song'))
+
 
 const routes = [
   {

@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, Suspense } from 'react'
 import { renderRoutes } from 'react-router-config'
 
 import store from './store'
@@ -15,7 +15,9 @@ export default memo(function App() {
     <Provider store={store}>
       <HashRouter>
         <HEAppHeader />
-        {renderRoutes(routes)}
+        <Suspense fallback={<div>loading...</div>}>
+          {renderRoutes(routes)}
+        </Suspense>
         <HEAppFooter />
         <HEAppPlaybar />
       </HashRouter>
