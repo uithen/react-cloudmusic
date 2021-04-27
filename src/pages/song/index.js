@@ -1,21 +1,28 @@
 import React, { memo } from 'react'
 
+import HESubNav from '@/components/sub-nav'
+import HESongInfo from './child-cpns/song-info'
+import HESongComment from './child-cpns/song-comment'
+import HESimiSongs from './child-cpns/simi-songs'
+import HESimiSong from './child-cpns/simi-song'
 import {
   SongWrapper,
   SongLeft,
   SongRight
 } from './styled'
-import HESubNav from '@/components/sub-nav'
+
 export default memo(function HESong() {
   return (
     <>
       <HESubNav/>
       <SongWrapper>
           <SongLeft>
-            SongLeft
+            <HESongInfo />
+            <HESongComment />
           </SongLeft>
           <SongRight>
-            SongRight
+            <HESimiSongs />
+            <HESimiSong />
           </SongRight>
       </SongWrapper>
     </>

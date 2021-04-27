@@ -1,4 +1,4 @@
-import { getSongDetail, getLyric } from '@/api/song-request'
+import { getSongDetail, getLyric, getSimiPlayList, getSimiSong } from '@/api/song-request'
 import { getRandomIndex } from '@/utils/handle-math'
 import { parseLyric } from '@/utils/handle-parse'
 
@@ -9,9 +9,11 @@ import {
   CHANGE_PLAY_MODE_SEQ,
   CHANGE_LYRIC_LIST, 
   CHANGE_CURRENT_LYRIC_INDEX,
+  CHANGE_SIMI_SONGS,
+  CHANGE_SIMI_SONG
  } from './constants'
 
- // action 
+ // action: playbar
 const changeCurrentSongAction = currentSong => ({
   type: CHANGE_CURRENT_SONG,
   currentSong
@@ -42,7 +44,18 @@ export const changeCurrentLyricIndexAction = currentLyricIndex => ({
   currentLyricIndex
 })
 
-// thunk "action"
+// action: page song 
+const changeSimiSongsAction = res => ({
+  type: CHANGE_SIMI_SONGS,
+  simiSongs: res.playlists
+})
+const changeSimiSongAction = res => ({
+  type: CHANGE_SIMI_SONG,
+  simiSong: res.songs
+})
+
+
+// thunk "action": playbar
 export const getCurrentSongAction = ids => {
   return async (dispatch, getState) => {
     // 1. 查找播放列表里是否存在所传id的歌曲
@@ -121,3 +134,23 @@ export const switchCurrentSong = tag => {
   }
 }
 
+
+
+// thunk "action": page song
+
+export const getSimiSongsAction = () => {
+  return async (dispatch, getState) => {
+    const id = getState().getIn(['song', 'currentSong']).id
+    if (!id) return 
+    const res = await getSimiPlayList(id)
+    dispatch(changeSimiSongsAction(res))
+  }
+}
+export const getSimiSongAction = () => {
+  return async (dispatch, getState) => {
+    const id = getState().getIn(['song', 'currentSong']).id
+    if (!id) return 
+    const res = await getSimiSong(id)
+    dispatch(changeSimiSongAction(res))
+  }
+}

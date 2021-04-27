@@ -5,7 +5,9 @@ import {
   CHANGE_PLAY_LIST, 
   CHANGE_PLAY_MODE_SEQ,
   CHANGE_LYRIC_LIST,
-  CHANGE_CURRENT_LYRIC_INDEX
+  CHANGE_CURRENT_LYRIC_INDEX,
+  CHANGE_SIMI_SONGS,
+  CHANGE_SIMI_SONG
  } from './constants'
 
 const defaultSong = Map({
@@ -15,6 +17,9 @@ const defaultSong = Map({
   playModeSeq: 0, // 播放模式设定,0 ->顺序,1 ->随机,2 ->单曲循环
   lyricList: [],
   currentLyricIndex: 0, 
+
+  simiSongs: [],
+  simiSong: []
 })
 
 const songReducer = (state = defaultSong, action) => {
@@ -31,6 +36,10 @@ const songReducer = (state = defaultSong, action) => {
       return state.set('lyricList', action.lyricList)
       case CHANGE_CURRENT_LYRIC_INDEX:
         return state.set('currentLyricIndex', action.currentLyricIndex)
+      case CHANGE_SIMI_SONGS: 
+        return state.set('simiSongs', action.simiSongs)
+      case CHANGE_SIMI_SONG:
+        return state.set('simiSong', action.simiSong)
     default: 
       return state 
   }
