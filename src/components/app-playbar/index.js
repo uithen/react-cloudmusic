@@ -1,19 +1,20 @@
 import React, { memo, useEffect, useRef, useState, useCallback } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
-import { 
-  getCurrentSongAction, 
+import {
+  getCurrentSongAction,
   changePlayModeSeqAction,
   switchCurrentSong,
   changeCurrentLyricIndexAction
- } from '../../pages/song/store'
+} from '../../pages/song/store'
 import { convertImgMini, formatDate, getPlayUrl } from '@/utils/handle-format'
 
 import { Slider, message } from 'antd'
 import { NavLink } from 'react-router-dom'
 import {
   PlaybarWrapper,
-  PlaybarContent
+  PlaybarContent,
+  PlayPanel
 } from './styled'
 
 export default memo(function HEAppPlaybar() {
@@ -23,6 +24,7 @@ export default memo(function HEAppPlaybar() {
   const [isChanging, setIsChanging] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isLocked, setIsLocked] = useState(true)
+  const [showPanel, setShowPanel] = useState(false)
 
 
   // <--- redux hooks --->
@@ -32,14 +34,16 @@ export default memo(function HEAppPlaybar() {
     playModeSeq,
     playList,
     lyricList,
-    currentLyricIndex
+    currentLyricIndex,
+    currentSongIndex
   } = useSelector(
     state => ({
       currentSong: state.getIn(['song', 'currentSong']),
       playModeSeq: state.getIn(['song', 'playModeSeq']),
       playList: state.getIn(['song', 'playList']),
       lyricList: state.getIn(['song', 'lyricList']),
-      currentLyricIndex: state.getIn(['song', 'currentLyricIndex'])
+      currentLyricIndex: state.getIn(['song', 'currentLyricIndex']),
+      currentSongIndex: state.getIn(['song', 'currentSongIndex'])
     }),
     shallowEqual
   )
@@ -48,6 +52,7 @@ export default memo(function HEAppPlaybar() {
   // <--- other hooks --->
   const audioRef = useRef()
   const playbarRef = useRef()
+  const panelLrcRef = useRef()
 
   useEffect(
     () => dispatch(getCurrentSongAction(363132)),
@@ -79,34 +84,31 @@ export default memo(function HEAppPlaybar() {
     setIsPlaying(!isPlaying)
   }, [isPlaying])
 
-  // 播放状态下,实时更新当前面板时间和进度条
   const handleTimeUpdate = (e) => {
+    // 播放状态下,实时更新歌曲时间和进度条
     const currentTime = (e.target.currentTime) * 1000
     if (!isChanging) {
       setCurrentTime(currentTime)
       setsliderProgress(currentTime / duration * 100)
     }
 
-    // 匹配当前歌词
-    const len = lyricList.length
-    let i = 0
-    // debugger
-    for (; i < len; i++) {
-      const lyricTime = lyricList[i]?.time || 0
-      if (currentTime < lyricTime) {
-        // lyricIndex = i 
-        // 匹配到第一个满足的就好,必须break,否则总是拿到最后一项索引
-        break 
-      }
-    }
-    // 由于当前歌词的真正进度实际为上一句歌词,因此最终获取的索引须减去1
-    const finalIndex = i - 1
+    // 获取高亮歌词索引
+    const finalIndex = getLrcIndex()
     // "防抖"优化
-    if (finalIndex !== currentLyricIndex) {
+    if (finalIndex !== currentLyricIndex) { 
+      // 更新至redux
       dispatch(changeCurrentLyricIndexAction(finalIndex))
-      const lyric = lyricList[finalIndex]?.content 
 
+      // 歌词面板,滚动处理
+      if (panelLrcRef.current) {
+        let liHeight = 32
+        // liHeight*3调整当前高亮歌词位置(中间);
+        // scrollTop属性对于负值会按0计算,即不会存在前几行歌词被截掉的风险
+        panelLrcRef.current.scrollTop = finalIndex * liHeight - ( liHeight * 3 )
+      }
+      
       // 歌词展示(播放栏上方)
+      const lyric = lyricList[finalIndex]?.content
       message.open({
         key: 'lyric',
         content: lyric,
@@ -145,14 +147,14 @@ export default memo(function HEAppPlaybar() {
     if (currentSeq > 2) {
       currentSeq = 0
     }
-    dispatch(changePlayModeSeqAction(currentSeq)) 
+    dispatch(changePlayModeSeqAction(currentSeq))
   }
- 
+
   // 点击上一首/下一首切换歌曲
   const switchMusic = tag => {
     dispatch(switchCurrentSong(tag))
   }
-  
+
   // 单首歌曲播放完毕,自动切换至下一首
   const handleMusicEnded = e => {
     // 单曲循环
@@ -166,7 +168,24 @@ export default memo(function HEAppPlaybar() {
     audioRef.current.play()
       .catch(err => setIsPlaying(true))
   }
-
+  
+  // 获取当前高亮歌词的索引
+  const getLrcIndex = () => {
+    const len = lyricList.length
+    let i = 0
+    // debugger
+    for (; i < len; i++) {
+      const lyricTime = lyricList[i]?.time || 0
+      if (currentTime < lyricTime) {
+        // lyricIndex = i 
+        // 匹配到第一个满足的就好,必须break,否则总是拿到最后一项索引
+        break
+      }
+    }
+    // 由于当前歌词的真正进度实际为上一句歌词,因此最终获取的索引须减去1
+    return i - 1
+  }
+  
   // 底部播放栏面板的显示与隐藏
   const hidePlaybar = e => {
     if (!isLocked) {
@@ -182,6 +201,7 @@ export default memo(function HEAppPlaybar() {
     }
   }
 
+  
   return (
     <PlaybarWrapper>
       <div className="playbar" ref={playbarRef} onMouseLeave={hidePlaybar}>
@@ -230,7 +250,6 @@ export default memo(function HEAppPlaybar() {
               <a className="source sprite_playbar" title="来自专辑" href="/song?id=1825496057" >&nbsp;</a>
             </div>
             <div className="progress">
-              {/* <Slider /> */}
               <Slider
                 value={sliderProgress}
                 onChange={handleSliderChange}
@@ -260,16 +279,59 @@ export default memo(function HEAppPlaybar() {
             <button className="volume sprite_playbar" title="音量"></button>
             <button onClick={changePlayModeSeq} className="mode sprite_playbar"></button>
             <span className="play-list">
-              <span className="add-tip sprite_playbar">已添加到播放列表</span>
-              <button title="播放列表" className="list-icon sprite_playbar">{playList.length}</button>
+              <button onClick={e => {setShowPanel(!showPanel)}} title="播放列表" className="list-icon sprite_playbar">
+                {playList.length}
+              </button>
             </span>
-            <div className="mode-tip sprite_playbar">随机</div>
           </div>
         </PlaybarContent>
       </div>
-      {/* <audio/> */}
       <audio ref={audioRef} onTimeUpdate={handleTimeUpdate} onEnded={handleMusicEnded} />
-
+      {
+        showPanel && (<PlayPanel>
+          <div className="header">
+            <div className="header-left">
+              <h3>{`播放列表 ( ${playList.length} )`}</h3>
+            </div>
+            <div className="header-right">{currentSong.name}</div>
+          </div>
+          <div className="main">
+            <img className="image" src="https://p4.music.126.net/qeN7o2R3_OTPhghmkctFBQ==/764160591569856.jpg" alt="" />
+            <ul className="panel-list">
+              {
+                playList.map((song, index) => {
+                  return (
+                    <li 
+                      className={currentSongIndex === index ? 'active item' : 'item'}
+                      key={song.id}
+                    >
+                      <div className="left">{song.name}</div>
+                      <div className="right">
+                        <span className="singer text-nowrap">{song.ar?.[0]?.name}</span>
+                        <span className="duration">{formatDate(song.dt, 'mm:ss')}</span>
+                        <span className="sprite_playlist link"></span>
+                      </div>
+                    </li>
+                  )
+                })
+              }
+            </ul>
+            <div className="panel-lyric" ref={panelLrcRef}>
+              <ul className="lrc-content">
+                {
+                  lyricList.map((lrc, index) => {
+                    return (
+                      <li key={lrc.time} className={currentLyricIndex === index ? 'lrc-item active' : 'lrc-item'}>
+                        {lrc.content}
+                      </li>
+                    )
+                  })
+                }
+              </ul>
+            </div>
+          </div>
+        </PlayPanel>)
+      }
     </PlaybarWrapper>
   )
 })

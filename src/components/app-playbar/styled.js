@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 import progressBar from '@/assets/img/progress_bar.png'
 import bgIcon from '@/assets/img/sprite_icon.png'
+import bgPanel from '@/assets/img/playpanel_bg.png'
+import bgList from '@/assets/img/playlist_sprite.png'
 
 
 export const PlaybarWrapper = styled.div`
@@ -324,18 +326,6 @@ export const PlaybarContent = styled.div`
       width: 59px;
       height: 36px;
       padding-top: 5px;
-      .add-tip {
-        display: none;
-        position: absolute;
-        top: -56px;
-        left: -65px;
-        width: 152px;
-        height: 49px;
-        line-height: 37px;
-        text-align: center;
-        color: #fff;
-        background-position: 0 -287px;
-      }
       .list-icon {
         display: block;
         width: 59px;
@@ -353,17 +343,135 @@ export const PlaybarContent = styled.div`
         background-position: -42px -98px;
       }
     }
-    .mode-tip {
-      display: none;
-      position: absolute;
-      top: -35px;
-      left: 12px;
-      width: 81px;
-      height: 39px;
-      line-height: 34px;
+  }
+`
+
+
+export const PlayPanel = styled.div`
+  position: absolute;
+  left: 50%;
+  bottom: 46px;
+  transform: translateX(-50%);
+  width: 986px;
+  height: 301px;
+  color: #e2e2e2;
+
+  .header {
+    display: flex;
+    height: 41px;
+    line-height: 41px;
+    background: url(${bgPanel}) 0 0;
+    
+    .header-left {
+      display: flex;
+      justify-content: space-between;
+      width: 553px;
+      padding: 0 25px;
+
+      h3 {
+        color: #e2e2e2;
+        font-weight: 700;
+      }
+    }
+    .header-right {
+      flex: 1;
       text-align: center;
       color: #fff;
-      background-position: 0 -457px;
+      font-size: 14px;
+    }
+  }
+
+  .main {
+    position: relative;
+    display: flex;
+    height: 260px;
+    overflow: hidden;
+    background: url(${bgPanel}) -1014px 0 repeat-y;
+
+    .image {
+      position: absolute;
+      left: 2px;
+      top: -360px;
+      width: 980px;
+      height: auto;
+      opacity: .2;
+    }
+
+    .panel-list {
+      position: relative;
+      width: 553px;
+      padding: 2px;
+
+      .item {
+        padding: 0 8px 0 25px;
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+        height: 28px;
+        line-height: 28px;
+        color: #ccc;
+
+        &.active {
+          color: #fff;
+          background-color: #000;
+
+          ::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            width: 10px;
+            height: 13px;
+            background: url(${bgList}) -182px 0;
+          }
+        }
+
+        .right {
+          display: flex;
+          align-items: center;
+
+          .singer {
+            width: 80px;
+            margin-right: 11px;
+          }
+
+          .duration {
+            width: 45px;
+          }
+
+          .link {
+            margin-left: 20px;
+            width: 14px;
+            height: 16px;
+            background-position: -100px 0;
+          }
+        }
+      }
+    }
+
+    .panel-lyric {
+      position: relative;
+      flex: 1;
+      margin: 21px 0 20px 0;
+      overflow: scroll;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .lrc-content {
+        .lrc-item {
+          height: 32px;
+          text-align: center;
+          color: #989898;
+
+          &.active {
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+          }
+        }
+      }
     }
   }
 `
