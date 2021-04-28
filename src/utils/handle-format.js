@@ -15,7 +15,7 @@ export const convertImgMini = (imgUrl, size) => {
   return `${imgUrl}?param=${size}y${size}`
 }
 
-// 日期格式处理(针对时间戳ms)
+// 日期格式处理(只针对时间戳(毫秒)做格式化(如:242880 --> 04:02))
 export function formatDate(time, fmt) {
   let date = new Date(time)
   if (/(y+)/.test(fmt)) {

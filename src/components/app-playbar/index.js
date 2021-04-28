@@ -7,6 +7,7 @@ import {
   switchCurrentSong,
   changeCurrentLyricIndexAction
 } from '../../pages/song/store'
+import classnames from 'classnames'
 import { convertImgMini, formatDate, getPlayUrl } from '@/utils/handle-format'
 
 import { Slider, message } from 'antd'
@@ -23,10 +24,10 @@ export default memo(function HEAppPlaybar() {
   const [sliderProgress, setsliderProgress] = useState(0)
   const [isChanging, setIsChanging] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [isLocked, setIsLocked] = useState(true)
   const [showPanel, setShowPanel] = useState(false)
-
-
+  const [showVolBar, setShowVolBar] = useState(false)
+  const [volume, setVolume] = useState(0)
+  const [isLocked, setIsLocked] = useState(true)
   // <--- redux hooks --->
   const dispatch = useDispatch()
   const {
@@ -91,7 +92,7 @@ export default memo(function HEAppPlaybar() {
       setCurrentTime(currentTime)
       setsliderProgress(currentTime / duration * 100)
     }
-
+    
     // 获取高亮歌词索引
     const finalIndex = getLrcIndex()
     // "防抖"优化
@@ -140,6 +141,14 @@ export default memo(function HEAppPlaybar() {
     }
   }, [duration, isPlaying, playMusic])
 
+  // 音量
+  const handleVolChange = useCallback(
+    value => {
+      setVolume(value)
+      audioRef.current.volume = value / 100
+    },
+    []
+  )
 
   // 修改播放模式(0 ->顺序,1 ->随机,2 ->单曲循环)
   const changePlayModeSeq = () => {
@@ -269,14 +278,14 @@ export default memo(function HEAppPlaybar() {
             <button className="share sprite_playbar" title="分享">分享</button>
           </div>
           <div className="settings sprite_playbar">
-            <div className="vol-mudulate">
-              <div className="vol-bar sprite_playbar"></div>
-              <div className="vol-bg sprite_playbar">
-                <div className="vol-crt sprite_playbar"></div>
-                <span className="vol-btn sprite_icon"></span>
-              </div>
+            <div className={classnames('volume-bar sprite_playbar', {'showbar': showVolBar})}>
+              <Slider 
+                value ={volume}
+                onChange={handleVolChange}
+                vertical
+              />
             </div>
-            <button className="volume sprite_playbar" title="音量"></button>
+            <button className="volume sprite_playbar" title="音量" onClick={e => setShowVolBar(!showVolBar)}></button>
             <button onClick={changePlayModeSeq} className="mode sprite_playbar"></button>
             <span className="play-list">
               <button onClick={e => {setShowPanel(!showPanel)}} title="播放列表" className="list-icon sprite_playbar">

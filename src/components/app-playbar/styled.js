@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import progressBar from '@/assets/img/progress_bar.png'
+import progressBarVertical from '@/assets/img/playbar_sprite.png'
 import bgIcon from '@/assets/img/sprite_icon.png'
 import bgPanel from '@/assets/img/playpanel_bg.png'
 import bgList from '@/assets/img/playlist_sprite.png'
@@ -84,7 +85,7 @@ export const PlaybarContent = styled.div`
   left: 50%;
   height: 47px;
   margin-left: -498.5px;
-
+  z-index: 11;
   .control-btns {
     display: flex;
     width: 137px;
@@ -256,44 +257,7 @@ export const PlaybarContent = styled.div`
     width: 126px;
     padding-left: 13px;
     background-position: -147px -238px;
-    .vol-mudulate {
-      position: absolute;
-      top: -113px;
-      left: 9px;
-      width: 32px;
-      height: 113px;
-      visibility: hidden;
-      & > div {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 32px;
-        height: 113px;
-        background-position: 0 -503px;
-      }
-      .vol-bg {
-        position: absolute;
-        top: 7px;
-        padding: 4px 0;
-        .vol-crt {
-          position: absolute;
-          top: auto;
-          bottom: 4px;
-          left: 0;
-          background-position: -40px bottom;
-          /* overflow: hidden; */
-        }
-        .vol-btn {
-          position: absolute;
-          left: -7px;
-          display: block;
-          width: 18px;
-          height: 20px;
-          background-position: -40px -250px;
-          cursor: pointer;
-        }
-      }
-    }
+
     .volume,
     .mode {
       width: 25px;
@@ -305,6 +269,34 @@ export const PlaybarContent = styled.div`
     }
     .volume:hover {
       background-position: -31px -248px;
+    }
+    .volume-bar {
+      visibility: hidden;
+      position: absolute;
+      top: -113px;
+      left: 9px;
+      width: 32px;
+      height: 113px;
+      background-position: 0 -503px;
+      .ant-slider-vertical {
+        position: absolute;
+        top: 11px;
+        left: 10px;
+        height: 93px;
+        margin: 0;
+        .ant-slider-track {
+          background: url(${progressBarVertical}) -40px bottom;
+        }
+        .ant-slider-handle {
+          width: 18px;
+          height: 20px;
+          border: none;
+          background: url(${bgIcon}) -41px -280px;
+        }
+      }
+    }
+    .volume-bar.showbar {
+      visibility: visible;
     }
     .mode {
       background-position: ${
