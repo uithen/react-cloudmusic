@@ -75,8 +75,6 @@ export default memo(function HEAppPlaybar() {
   const picUrl = currentSong.al?.picUrl || 'can give one local image as a placeholder'
   const artist = currentSong.ar?.[0]?.name || '群星'
   const duration = currentSong.dt || 0
-
-  // formatDate只针对时间戳(毫秒)做格式化(如:242880 --> 04:02)
   const showDuration = formatDate(duration, 'mm:ss')
   const showCurrentTime = formatDate(currentTime, 'mm:ss')
 
