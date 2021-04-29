@@ -140,7 +140,7 @@ body, textarea, select, input, button {
   color: #fff;
 }
 
-/* span:hover.link {
+span:hover.link {
   text-decoration: underline;
   cursor: pointer;
-} */
+}

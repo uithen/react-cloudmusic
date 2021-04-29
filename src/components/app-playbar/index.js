@@ -10,7 +10,7 @@ import {
 import classnames from 'classnames'
 import { convertImgMini, formatDate, getPlayUrl } from '@/utils/handle-format'
 
-import { Slider, message } from 'antd'
+import { Slider } from 'antd'
 import { NavLink } from 'react-router-dom'
 import {
   PlaybarWrapper,
@@ -26,7 +26,7 @@ export default memo(function HEAppPlaybar() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [showPanel, setShowPanel] = useState(false)
   const [showVolBar, setShowVolBar] = useState(false)
-  const [volume, setVolume] = useState(0)
+  const [volume, setVolume] = useState(26)
   const [isLocked, setIsLocked] = useState(true)
   // <--- redux hooks --->
   const dispatch = useDispatch()
@@ -107,13 +107,13 @@ export default memo(function HEAppPlaybar() {
       }
       
       // 歌词展示(播放栏上方)
-      const lyric = lyricList[finalIndex]?.content
-      message.open({
-        key: 'lyric',
-        content: lyric,
-        duration: 0,
-        className: 'lyric'
-      })
+      // const lyric = lyricList[finalIndex]?.content
+      // message.open({
+      //   key: 'lyric',
+      //   content: lyric,
+      //   duration: 0,
+      //   className: 'lyric'
+      // })
     }
   }
 

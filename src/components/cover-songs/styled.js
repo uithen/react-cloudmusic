@@ -6,7 +6,7 @@ import bgIcon from '@/assets/img/sprite_icon.png'
 export const CoverSongsWrapper = styled.li`
   width: 140px;
   height: 204px;
-  margin: 20px 0 10px 0;
+  margin: 20px ${props => props.right || 0} 10px 0;
 
   .cover-item {
     position: relative;

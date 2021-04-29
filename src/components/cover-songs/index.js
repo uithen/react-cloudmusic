@@ -5,12 +5,12 @@ import { getPlayCount, convertImgMini } from '@/utils/handle-format'
 import { CoverSongsWrapper } from './styled'
 
 export default memo(function HECoverSongs(props) {
-  const {cover, showBotOrigin, ellipsisText} = props 
-
+  const {cover, showBotOrigin, ellipsisText, marginRight} = props 
+  const picUrl = cover.picUrl || cover.coverImgUrl
   return (
-    <CoverSongsWrapper>
+    <CoverSongsWrapper right={marginRight}>
       <div className="cover-item">
-        <img src={convertImgMini(cover.picUrl, 140)} alt=""/>
+        <img src={convertImgMini(picUrl, 140)} alt=""/>
         <a href="/#" title={cover.name} className="image_cover">
           {cover.name}
         </a>
@@ -27,8 +27,8 @@ export default memo(function HECoverSongs(props) {
       </p>
       {
         showBotOrigin && <p>
-          <span>by</span>
-          <a href="/#">xxxx</a>
+          <span>by </span>
+          <a href="/#">{cover.copywriter || cover.creator.nickname}</a>
         </p>
       }
     </CoverSongsWrapper>
