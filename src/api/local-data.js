@@ -7,7 +7,7 @@ export const headerLinks = [
   },
   {
     title: '我的音乐',
-    link: '/mine'
+    link: '/my'
   },
   {
     title: '朋友',

@@ -1,5 +1,6 @@
-import React, { memo, useEffect, useMemo } from 'react'
+import React, { memo, useCallback, useEffect, useMemo } from 'react'
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
+import { useHistory } from 'react-router'
 
 import { getHotRcmdAction } from '../../store/actionCreators'
 import { HOT_RCMD_LIMIT } from '@/common/constants'
@@ -21,27 +22,55 @@ export default memo(function HEHotRcmd() {
     },
     []
   )
+  const history = useHistory()
   const dispatch = useDispatch()
   const hotRcmd = useSelector(
     state => state.getIn(['recommend', 'hotRcmd']),
     shallowEqual
   )
+
   useEffect(
     () => dispatch(getHotRcmdAction(HOT_RCMD_LIMIT)),
     [dispatch]
   )
 
+  const toSongsPage = useCallback(
+    (e) => {
+      e.preventDefault()
+      history.push({ pathname: '/discover/songs' })
+    },
+    [history]
+  )
+
+  const toSongsPageCate = useCallback(
+    (e, cate) => {
+      e.preventDefault()
+      history.push({
+        pathname: '/discover/songs',
+        cate
+      })
+      console.log('history has payload, can get in location: ', history)
+    },
+    [history]
+  )
+
   return (
     <HotRcmdWrapper>
-      <HEThemeHeaderRcmd tit="热门推荐" tabTitle={info.tabTitle} />
+      <HEThemeHeaderRcmd 
+        tit="热门推荐" 
+        tabTitle={info.tabTitle} 
+        onClick={toSongsPageCate} 
+        moreLink={'/discover/songs'}
+      />
       <HotRcmdContent className="cover-list">
         {
           hotRcmd.map(cover => {
             return <HECoverSongs
-              cover={cover} 
+              cover={cover}
               showBotOrigin={info.showBotOrigin}
               ellipsisText={info.ellipsisText}
               key={cover.id}
+              onClick={toSongsPage}
             />
           })
         }

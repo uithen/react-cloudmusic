@@ -9,7 +9,7 @@ const HEDjradio = React.lazy(() => import('../pages/discover/child-pages/djradio
 const HEArtist = React.lazy(() => import('../pages/discover/child-pages/artist'))
 const HEAlbum = React.lazy(() => import('../pages/discover/child-pages/album'))
 
-const HEMine = React.lazy(() => import('../pages/mine'))
+const HEMy = React.lazy(() => import('../pages/my'))
 const HEFriend = React.lazy(() => import('../pages/friend'))
 const HESong = React.lazy(() => import('../pages/song'))
 
@@ -52,8 +52,8 @@ const routes = [
     ]
   },
   {
-    path: '/mine',
-    component: HEMine
+    path: '/my',
+    component: HEMy
   },
   {
     path: '/friend',

@@ -1,9 +1,11 @@
 import React, { memo, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useLocation } from 'react-router'
 
 import { 
   getCategoriesAction, 
-  getCurrentCateSongsAction
+  getCurrentCateSongsAction,
+  changeCurrentCateSongsNameAction
  } from './store/actionCreators'
 
 import { SongsWrapper } from './styled'
@@ -14,6 +16,14 @@ export default memo(function HESongs() {
   const cateList = useSelector(state => state.getIn(['songs', 'cateList']))
   const dispatch = useDispatch()
   console.log(cateList)
+
+  const category = useLocation().cate
+  console.log(category)
+  useEffect(
+    () => dispatch(changeCurrentCateSongsNameAction(category)),
+    [dispatch, category]
+  )
+  
   useEffect(
     () => {
       // 获取歌单的全部分类
@@ -23,7 +33,7 @@ export default memo(function HESongs() {
     },
     [dispatch]
     )
-
+  
   return (
     <SongsWrapper className="wrap-980">
       <HESongsHeader />

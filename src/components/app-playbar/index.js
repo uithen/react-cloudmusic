@@ -251,10 +251,10 @@ export default memo(function HEAppPlaybar() {
           </div>
           <div className="play-area">
             <div className="song-info">
-              <a className="song-name text-nowrap" href="/song?id=1825496057" title={currentSong.name}>{currentSong.name}</a>
-              <a className="mv sprite_playbar" href="/song?id=1825496057" title="mv">mv</a>
-              <a className="by" title={artist} href="/song?id=1825496057" >{artist}</a>
-              <a className="source sprite_playbar" title="来自专辑" href="/song?id=1825496057" >&nbsp;</a>
+              <a className="song-name text-nowrap" href="/todo" title={currentSong.name}>{currentSong.name}</a>
+              <a className="mv sprite_playbar" href="/todo" title="mv">mv</a>
+              <a className="by" title={artist} href="/todo" >{artist}</a>
+              <a className="source sprite_playbar" title="来自专辑" href="/todo" >&nbsp;</a>
             </div>
             <div className="progress">
               <Slider
@@ -303,7 +303,7 @@ export default memo(function HEAppPlaybar() {
             <div className="header-right">{currentSong.name}</div>
           </div>
           <div className="main">
-            <img className="image" src="https://p4.music.126.net/qeN7o2R3_OTPhghmkctFBQ==/764160591569856.jpg" alt="" />
+            <img className="image" src="//p4.music.126.net/qeN7o2R3_OTPhghmkctFBQ==/764160591569856.jpg" alt="" />
             <ul className="panel-list">
               {
                 playList.map((song, index) => {

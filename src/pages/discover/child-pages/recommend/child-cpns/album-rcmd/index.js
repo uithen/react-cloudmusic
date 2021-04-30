@@ -27,7 +27,7 @@ export default memo(function HEAlbumRcmd() {
   
   return (
     <AlbumWrapper>
-      <HEThemeHeaderRcmd tit="新碟上架" />
+      <HEThemeHeaderRcmd tit="新碟上架" moreLink={'/discover/album'}/>
       <div className="album">
         <a onClick={e => switchTo(e, 'prev')} className="arrow arrow-prev" href="/#">
           &nbsp;

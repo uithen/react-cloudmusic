@@ -15,7 +15,7 @@ const changeCateListAction = res => ({
 })
 const changeCurrentCateAction = res => ({
   type: CHANGE_CURRENT_CATE,
-  currentCate: res.playlist // playlist ? playList ? !!! kengbi !!!
+  currentCate: res.playlist // playlist ? playList ? !!! 
 })
 const changeCurrentCateIndexAction = index => ({
   type: CHANGE_CURRENT_CATE_INDEX,

@@ -4,7 +4,6 @@ import { useSelector, shallowEqual } from 'react-redux'
 import { convertImgMini } from '@/utils/handle-format'
 
 import { SongInfoWrapper, InfoLeft, InfoRight } from './styled'
-import HEOperationBar from '@/components/operation-bar'
 
 export default memo(function HESongInfo() {
   const [isSpread, setIsSpread] = useState(false)
@@ -36,7 +35,7 @@ export default memo(function HESongInfo() {
       <InfoRight isSpread={isSpread}>
         <div className="header">
           <i className="sprite_icon2"></i>
-          <h3 className="title">{'currentSong.name'}</h3>
+          <h3 className="title">{currentSong.name}</h3>
         </div>
         <div className="singer">
           <span className="label">歌手：</span>
@@ -47,10 +46,10 @@ export default memo(function HESongInfo() {
           <a href="/#" className="name">{currentSong?.al?.name}</a>
         </div>
 
-        <HEOperationBar favorTitle="收藏"
+        {/* <HEOperationBar favorTitle="收藏"
           shareTitle="分享"
           downloadTitle="下载"
-          commentTitle="(167366)" />
+          commentTitle="(167366)" /> */}
 
         <div className="lyric">
           <div className="lyric-info">

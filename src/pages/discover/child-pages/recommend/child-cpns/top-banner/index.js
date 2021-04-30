@@ -2,24 +2,28 @@ import React, { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import { getTopBannerAction } from '../../store/actionCreators'
+import { getCurrentSongAction } from '@/pages/song/store'
 
 import { Carousel } from 'antd'
-import { 
-  TopBannerWrapper, 
-  BannerLeft, 
-  BannerRight, 
+import { NavLink } from 'react-router-dom'
+import {
+  TopBannerWrapper,
+  BannerLeft,
+  BannerRight,
   BannerControl
- } from './styled'
+} from './styled'
 
 
 export default memo(function HETopBanner() {
   const [crtIdx, setCrtIdx] = useState(0)
 
-  const topBanner = useSelector(
-    state => state.getIn(['recommend', 'topBanner']), 
+  const {topBanner} = useSelector(
+    state => ({
+      topBanner: state.getIn(['recommend', 'topBanner'])
+    }),
     shallowEqual
   )
-  const dispatch = useDispatch() 
+  const dispatch = useDispatch()
 
   useEffect(
     () => {
@@ -41,7 +45,7 @@ export default memo(function HETopBanner() {
   )
 
   // 轮播背景(网易使用的是以同一张图片的url拼接query的方式实现的高斯模糊)
-  const bgImg = topBanner[crtIdx] 
+  const bgImg = topBanner[crtIdx]
     && topBanner[crtIdx].imageUrl + '?imageView&blur=40x20'
 
   return (
@@ -49,21 +53,26 @@ export default memo(function HETopBanner() {
       <div className="banner wrap-980">
         <BannerLeft>
           <Carousel
-            ref={bannerRef} 
+            ref={bannerRef}
             beforeChange={switchIndex}
-            effect="fade" 
+            effect="fade"
             autoplay
           >
             {
               topBanner.map(banner => {
                 return (
-                  <div key={banner.targetId} className="banner-item">
-                    <img 
-                      src={banner.imageUrl} 
+                  <NavLink
+                    onClick={e => dispatch(getCurrentSongAction(banner.targetId))}
+                    to="/song"
+                    key={banner.targetId}
+                    className="banner-item"
+                  >
+                    <img
+                      src={banner.imageUrl}
                       className="banner-img"
-                      alt={banner.typeTitle} 
+                      alt={banner.typeTitle}
                     />
-                  </div>
+                  </NavLink>
                 )
               })
             }
@@ -71,9 +80,9 @@ export default memo(function HETopBanner() {
         </BannerLeft>
         <BannerRight>
           <a
-            href="https://music.163.com/#/download" 
+            href="https://music.163.com/#/download"
             rel="noreferrer noopener"
-            target="_blank" 
+            target="_blank"
           >
             下载客户端
           </a>
@@ -81,12 +90,12 @@ export default memo(function HETopBanner() {
         </BannerRight>
         <BannerControl>
           <button
-            onClick={e => bannerRef.current.prev()} 
+            onClick={e => bannerRef.current.prev()}
             className="arrow arrow-prev"
           >
           </button>
           <button
-            onClick={e => bannerRef.current.next()} 
+            onClick={e => bannerRef.current.next()}
             className="arrow arrow-next"
           >
           </button>

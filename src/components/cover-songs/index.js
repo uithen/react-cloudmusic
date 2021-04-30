@@ -8,7 +8,7 @@ export default memo(function HECoverSongs(props) {
   const {cover, showBotOrigin, ellipsisText, marginRight} = props 
   const picUrl = cover.picUrl || cover.coverImgUrl
   return (
-    <CoverSongsWrapper right={marginRight}>
+    <CoverSongsWrapper right={marginRight} onClick={props.onClick}>
       <div className="cover-item">
         <img src={convertImgMini(picUrl, 140)} alt=""/>
         <a href="/#" title={cover.name} className="image_cover">

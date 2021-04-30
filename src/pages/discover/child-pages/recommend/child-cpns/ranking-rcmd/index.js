@@ -33,7 +33,7 @@ export default memo(function HERankingRcmd() {
   
   return (
     <RankingRcmdWrapper>
-      <HEThemeHeaderRcmd tit="榜单" />
+      <HEThemeHeaderRcmd tit="榜单" moreLink="/discover/ranking" />
       <div className="list-item">
         <HERankingListRcmd info={rankingOriginal} />
         <HERankingListRcmd info={rankingUp} />

@@ -6,9 +6,10 @@ import routes from '@/router'
 
 import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
+import HEBackTop from '@/components/back-top'
 import HEAppHeader from '@/components/app-header'
-import HEAppFooter from '@/components/app-footer' 
-import HEAppPlaybar from '@/components/app-playbar' 
+import HEAppFooter from '@/components/app-footer'
+import HEAppPlaybar from '@/components/app-playbar'
 
 export default memo(function App() {
   return (
@@ -20,6 +21,7 @@ export default memo(function App() {
         </Suspense>
         <HEAppFooter />
         <HEAppPlaybar />
+        <HEBackTop />
       </HashRouter>
     </Provider>
   )

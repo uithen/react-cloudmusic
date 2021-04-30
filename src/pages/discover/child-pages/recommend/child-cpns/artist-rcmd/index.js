@@ -18,14 +18,14 @@ export default memo(function HEArtistRcmd() {
     <ArtistRcmdWrapper>
       <h3 className="top">
         <span>入驻歌手</span>
-        <a href="/todo" className="more">查看全部 &gt;</a>
+        <a href="/#/discover/artist" className="more">查看全部 &gt;</a>
       </h3>
       <ul className="artist-list">
         {
           artistList.reverse().map(item => {
             return (
               <li key={item.id}>
-                <a href="/todo">
+                <a href="/#/discover/artist">
                   <div className="head">
                     <img src={convertImgMini(item.picUrl, 62)} alt="" />
                   </div>

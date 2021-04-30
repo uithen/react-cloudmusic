@@ -12,7 +12,7 @@ export default memo(function HECoverAlbum(props) {
     <CoverAlbumWrapper width={width} size={size} bgp={bgp}>
       <div className="coveritem">
         <img src={convertImgMini(picUrl, size)} alt="" />
-        <a href="/#" className="image_cover">&nbsp;</a>
+        <a href="/#discover/album" className="image_cover">&nbsp;</a>
       </div>
       <p className="title text-nowrap">
         <a href="/#">{name}</a>

@@ -19,14 +19,15 @@ export default memo(function HEAllAlbum() {
 
   useEffect(
     () => dispatch(getAllAlbumsAction(PER_PAGE_ALBUM_NUM, currentPage)),
-    [dispatch]
+    [dispatch, currentPage]
   )
   
   const handlePageChange = useCallback(
     (page, pageSize) => {
       setCurrentPage(page)
       dispatch(getAllAlbumsAction(PER_PAGE_ALBUM_NUM, page))
-    }
+    },
+    [dispatch]
   )
   
   return (

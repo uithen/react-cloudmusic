@@ -3,7 +3,6 @@ import { shallowEqual, useSelector } from 'react-redux'
 
 import { convertImgMini, formatMonthDay } from '@/utils/handle-format'
 
-import HEOperationBar from '@/components/operation-bar'
 import {
   RankingHeaderWrapper
 } from './styled'
@@ -28,12 +27,12 @@ export default memo(function HERankingHeader() {
           <div>最近更新：{formatMonthDay(currentCate.updateTime)}</div>
           <div className="update-f">（{"每日更新:TODO"}）</div>
         </div>
-        <HEOperationBar 
+        {/* <HEOperationBar 
           favorTitle={`(${currentCate.subscribedCount})`}
           shareTitle={`(${currentCate.shareCount})`}
           downloadTitle="下载"
           commentTitle={`(${currentCate.commentCount})`}
-        />
+        /> */}
       </div>
     </RankingHeaderWrapper>
   )
