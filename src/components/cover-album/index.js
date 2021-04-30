@@ -6,7 +6,7 @@ import { CoverAlbumWrapper } from './styled'
 
 export default memo(function HECoverAlbum(props) {
   const {size, width, bgp} = props
-  const {picUrl, name, company} = props.albumInfo 
+  const {picUrl, name, artist} = props.albumInfo 
   
   return (
     <CoverAlbumWrapper width={width} size={size} bgp={bgp}>
@@ -18,7 +18,7 @@ export default memo(function HECoverAlbum(props) {
         <a href="/#">{name}</a>
       </p>
       <p className="author text-nowrap">
-        <a href="/#">{company}</a>
+        <a href="/#">{artist.name}</a>
       </p>
     </CoverAlbumWrapper>
   )

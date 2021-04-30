@@ -23,7 +23,7 @@ export const generateSingerAlpha = () => {
   const end = 'Z'.charCodeAt(0) // 90
 
   for (; start <= end; start++) {
-    // 65->A,66->B...90->Z ==> [A,B,...,Z]
+    // 65->A,66->B...90->Z ---> [A,B,...,Z]
     alphabets.push(String.fromCharCode(start)) 
   }
 

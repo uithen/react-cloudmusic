@@ -34,7 +34,6 @@ export const AlbumWrapper = styled.div`
 
       .album-list {
         display: flex !important;
-        margin-top: 28px;
       }
     }
   }

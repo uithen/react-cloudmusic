@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const CoverAlbumWrapper = styled.div`
   width: ${props => props.width + "px"};
+  margin-top: 17px;
   margin-left: 11px;
 
   .coveritem {

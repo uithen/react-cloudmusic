@@ -6,6 +6,7 @@ import HESubNav from '@/components/sub-nav'
 
 export default memo(function HEDiscover(props) {
   const {routes} = props.route
+  
   return (
     <DiscoverWrapper>
       <HESubNav />
